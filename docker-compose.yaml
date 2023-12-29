@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+
+  frontend:
+    container_name: frontend
+    restart: always
+    build:
+      context: ./lima-frontend
+      dockerfile: Dockerfile
+      args:
+        API_URL: http://192.168.1.33:3001
+    ports:
+      - '3000:3000'
+
+  api:
+    container_name: backend
+    restart: always
+    build:
+      context: ./lima-backend
+      dockerfile: Dockerfile
+    environment:
+      - MONGODB_URL=mongodb://192.168.1.33:27017
+    ports:
+      - '3001:3001'
+
+  database:
+    container_name: database
+    image: mongo
+    restart: always
+    ports:
+      - '27017:27017'
+
+  cat-watcher:
+    container_name: cat-watcher
+    restart: unless-stopped
+    build:
+      context: ./apps/cat-watcher
+      dockerfile: Dockerfile
+    environment:
+      - API_URL=http://192.168.1.33:3001
+      - TOKEN=test
