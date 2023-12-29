@@ -1,0 +1,3 @@
+[submodule "apps/cat-watcher"]
+	path = apps/cat-watcher
+	url = git@github.com:r-dvl/cat-watcher.git
