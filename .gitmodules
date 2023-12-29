@@ -2,8 +2,8 @@
 	path = apps/cat-watcher
 	url = git@github.com:r-dvl/cat-watcher.git
 [submodule "lima-frontend"]
-	path = lima-frontend
+	path = frontend/lima-frontend
 	url = git@github.com:r-dvl/lima-frontend.git
 [submodule "lima-backend"]
-	path = lima-backend
+	path = api/lima-backend
 	url = git@github.com:r-dvl/lima-backend.git

@@ -5,10 +5,10 @@ services:
     container_name: frontend
     restart: always
     build:
-      context: ./lima-frontend
+      context: ./frontend/lima-frontend
       dockerfile: Dockerfile
       args:
-        API_URL: http://192.168.1.33:3001
+        API_URL: http://localhost:3001
     ports:
       - '3000:3000'
 
@@ -16,10 +16,10 @@ services:
     container_name: backend
     restart: always
     build:
-      context: ./lima-backend
+      context: ./backend/lima-backend
       dockerfile: Dockerfile
     environment:
-      - MONGODB_URL=mongodb://192.168.1.33:27017
+      - MONGODB_URL=mongodb://localhost:27017
     ports:
       - '3001:3001'
 
@@ -37,5 +37,5 @@ services:
       context: ./apps/cat-watcher
       dockerfile: Dockerfile
     environment:
-      - API_URL=http://192.168.1.33:3001
-      - TOKEN=test
+      - API_URL=http://localhost:3001
+      - TOKEN=
